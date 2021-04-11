@@ -40,7 +40,7 @@ gcloud components install kubectl
 gcloud auth configure-docker
 gcloud auth login
 ```
-- en la terminal local una vez ejecutado validado con GCP crear un proyecto.
+- en la terminal local una vez ejecutado y validado con GCP crear un proyecto.
 ```sh
 gcloud projects create proyecto-final-jc --name="Proyecto-Final-JC"
 ```
