@@ -123,7 +123,7 @@ kubectl apply -f deployment.yaml
 ```sh
 kubectl get services
 ```
-######  se debe esperar un poco hasta que el servicion svc-nodeback-nodefront entregue la ip publica por ende debe ejecutar el comando anterior las veces que sea necesario.
+######  se debe esperar un poco hasta que el servicio svc-nodeback-nodefront entregue la ip publica por ende debe ejecutar el comando anterior las veces que sea necesario.
 
 
 
