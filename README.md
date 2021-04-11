@@ -16,13 +16,14 @@
 ## Uso
 > Preparativos:
 
-- Tener una cuenta google cloud (obligatorio)
-- Tener Docker instalado localmente (obligatorio)
-- Descargar el codigo fuente (obligatorio) 
+- Tener una cuenta google cloud `(obligatorio)` [Link](https://cloud.google.com/)
+- Tener Docker instalado localmente `(obligatorio)` [Link](https://docs.docker.com/get-started/)
+- Descargar el codigo fuente `(obligatorio)` [Link](https://github.com/JCarvajalDev/TrabajoFinalK8s)
+###### si usa git puede usar el siguiente comando
 ```sh
 git clone https://github.com/JCarvajalDev/TrabajoFinalK8s.git
 ```
-- instalar node y kubernetes localmente (opcional)
+- instalar [node](https://nodejs.org/es/) y kubernetes localmente `(opcional)`
 
 ## Configuraciones Google Cloud (GCP) y Terminal 
 
