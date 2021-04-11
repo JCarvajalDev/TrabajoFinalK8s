@@ -62,12 +62,12 @@ gcloud container clusters get-credentials cluster-pf
 -- Crear una BBDD en mysql con el nombre (contactos).
 -- Crear un usuario de mysql con acceso a la BBDD contactos.
 > Recomendaciones al crear instancia SQL: 
-> id de instancia: mysqlpf
-> Version bbdd: MYSQL 5.6
-> Region: us-east1
-> Zona: Unica
-> Tipo Maquina: Ligera
-> Tipo Almacenamiento: HDD y 10GB
+## id de instancia: mysqlpf
+## Version bbdd: MYSQL 5.6
+## Region: us-east1
+## Zona: Unica
+## Tipo Maquina: Ligera
+## Tipo Almacenamiento: HDD y 10GB
 
 - en GCP crear cuenta de servicio (Service Account) con Rol cloudsql.client y generar la key de tipo JSON.
 ```sh
