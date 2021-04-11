@@ -98,8 +98,7 @@ kubectl create secret generic claves-proyecto-final \
 
 ## Configuraciones en el proyecto `Backend`
 - En la carpeta Backend del proyecto modificar el deployment.yaml
--- en la linea 34 donde dice Tu Nombre de la conexión MYSQL debes colocar la que te entrego GCP en la instancia MySQL
-esto lo hacemos porque se configuro en este proyecto un proxy seguro de conexion (cloud_sql_proxy) entre el cluster y la instancia MySQL
+###### en la linea 34 donde dice Tu Nombre de la conexión MYSQL debes colocar la que te entrego GCP en la instancia MySQL esto lo hacemos porque se configuro en este proyecto con un proxy seguro de conexion `(cloud_sql_proxy)` entre el cluster y la instancia MySQL
 
 ## Creando Imagenes, Subiendo y desplegando
 
@@ -124,7 +123,7 @@ kubectl apply -f deployment.yaml
 ```sh
 kubectl get services
 ```
--- se debe esperar un poco hasta que el servicion svc-nodeback-nodefront entregue la ip publica
+######  se debe esperar un poco hasta que el servicion svc-nodeback-nodefront entregue la ip publica por ende debe ejecutar el comando anteriro las veces que sea necesario.
 
 
 
