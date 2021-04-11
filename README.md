@@ -63,7 +63,7 @@ gcloud container clusters create cluster-pf --zone=us-east1-b --machine-type=g1-
 gcloud container clusters get-credentials cluster-pf
 ```
 
-- en GCP usar un servicio de SQL de tipo (MYSQL) `version 5.6`, los datos que ingresara son importante por favor recordar ya que seran requerido en los siguiente pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
+- en [GCP](https://console.cloud.google.com/) usar un servicio de SQL de tipo (MYSQL) `version 5.6`, los datos que ingresara son importante por favor recordar ya que seran requerido en los siguiente pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
 ###### Crear una BBDD en mysql con el nombre (contactos).
 ###### Crear un usuario de mysql con acceso a la BBDD contactos.
 > Recomendaciones al crear instancia SQL: 
