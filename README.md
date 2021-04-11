@@ -44,8 +44,8 @@ gcloud projects create proyecto-final-jc --name="Proyecto-Final-JC"
 gcloud config set project proyecto-final-jc
 ```
 - en la plataforma web de GCP es necesario tener habilitado lo siguiente:
--- `Facturacion al proyecto creado`
--- `API de Container Engine`
++ `Facturacion al proyecto creado`
++ `API de Container Engine`
 -- `API Manager`
 -- `API Google Cloud SQL`
 -- `API Container Registry`
