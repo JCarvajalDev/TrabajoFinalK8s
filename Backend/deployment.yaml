@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-uploads-pf
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---      
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeback-deployment
+  labels:
+    app: nodeback
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeback
+  template:
+    metadata:
+      labels:
+        app: nodeback
+    spec:
+      containers:
+      - name: proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.11
+        command: ["/cloud_sql_proxy",
+            "-instances=proyecto-final-jc:us-east1:mysqlpf=tcp:3306",
+            "-credential_file=/secrets/cloudsql/credenciales-p.json"]
+        volumeMounts:
+        - name: cloudsql-instance-credentials
+          mountPath: /secrets/cloudsql
+          readOnly: true     
+      - name: nodeback
+        image: us.gcr.io/proyecto-final-jc/nodeback       
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: claves-proyecto-final
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: claves-proyecto-final
+              key: DB_USER
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: claves-proyecto-final
+              key: DB_HOST
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: claves-proyecto-final
+              key: DB_PASS 
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: claves-proyecto-final
+              key: DB_PORT      
+        ports:
+        - containerPort: 3001
+        volumeMounts:
+          - name: vol
+            mountPath: /usr/src/app/uploads
+      volumes:
+        - name: vol
+          persistentVolumeClaim:
+            claimName: pvc-uploads-pf      
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-credentials-p
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nodeback-pf
+spec:
+  selector:
+    app: nodeback
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
+  type: ClusterIP

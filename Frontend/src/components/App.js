@@ -46,7 +46,11 @@ export default class App extends React.Component {
          <div>
 
          <Label as='a' color='teal' tag>
-              <Icon name='github' /> https://github.com/Brandon05/Address-Book-          
+              <Icon name='github' />Fuente Original https://github.com/Brandon05/Address-Book-          
+         </Label>
+
+         <Label as='a' color='red' tag>
+              <Icon name='github' />Fuente Trabajo Final https://github.com/JCarvajalDev/TrabajoFinalK8s          
          </Label>
                       
         </div>

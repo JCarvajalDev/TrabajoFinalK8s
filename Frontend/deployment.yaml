@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodefront-deployment
+  labels:
+    app: nodefront
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodefront
+  template:
+    metadata:
+      labels:
+        app: nodefront
+    spec:
+      containers:
+      - name: nodefront
+        image: us.gcr.io/proyecto-final-jc/nodefront
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nodeback-nodefront
+spec:
+  selector:
+    app: nodefront
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

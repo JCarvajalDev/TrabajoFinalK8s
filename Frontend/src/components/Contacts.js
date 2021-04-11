@@ -93,7 +93,7 @@ export default class Contacts extends React.Component {
           <Table.Cell width='6'>
             <Header as='h2' image>
               {contact.image &&
-                <Image src={`http://localhost:3001/${contact.image}`} size='massive'  circular />
+                <Image src={`${contact.image}`} size='massive'  circular />
               }
               {!contact.image &&
                 <Icon name="user" size='mini' style={{marginRight: 50}}/>
@@ -144,8 +144,8 @@ export default class Contacts extends React.Component {
         {contactState.showDeleteModal &&
         <Confirm
           open={contactState.showDeleteModal}
-          cancelButton='Never mind'
-          confirmButton="Yes delete contact"
+          cancelButton='Cancelar'
+          confirmButton="Eliminar Contacto"
           onCancel={this.hideDeleteModal}
           onConfirm={this.deleteContact}
         />
