@@ -18,20 +18,20 @@
 
 - Tener una cuenta google cloud `(obligatorio)` [Link](https://cloud.google.com/)
 - Tener Docker instalado localmente `(obligatorio)` [Link](https://docs.docker.com/get-started/)
-- Descargar el código fuente `(obligatorio)` [Link](https://github.com/JCarvajalDev/TrabajoFinalK8s)
+- Descargar el código fuente de este proyecto `(obligatorio)` [Link](https://github.com/JCarvajalDev/TrabajoFinalK8s)
 ###### si usa git puede usar el siguiente comando
 ```sh
 git clone https://github.com/JCarvajalDev/TrabajoFinalK8s.git
 ```
-- instalar [node](https://nodejs.org/es/) y kubernetes localmente `(opcional)`
+- Instalar [node](https://nodejs.org/es/) y kubernetes localmente `(opcional)`
 
 ## Configuraciones Google Cloud (GCP) y Terminal 
 
-- en la terminal local inciamos el comando
+- En la terminal local inciamos el comando
 ```sh
 gcloud init
 ```
-- descargar los componentes de gcloud en la terminal local
+- Descargar los componentes de gcloud en la terminal local
 ```sh
 gcloud components install kubectl
 ```
@@ -40,22 +40,22 @@ gcloud components install kubectl
 gcloud auth configure-docker
 gcloud auth login
 ```
-- en la terminal local una vez ejecutado y validado con GCP crear un proyecto.
+- En la terminal local una vez ejecutado y validado con GCP crear un proyecto.
 ```sh
 gcloud projects create proyecto-final-jc --name="Proyecto-Final-JC"
 ```
-- en la terminal local asociamos el proyecto recientemente creado
+- En la terminal local asociamos el proyecto recientemente creado
 ```sh
 gcloud config set project proyecto-final-jc
 ```
-- en la plataforma web de GCP es necesario tener habilitado lo siguiente:
+- En la plataforma web de GCP es necesario tener habilitado lo siguiente:
 - [x] `Facturacion al proyecto creado`
 - [x] `API de Container Engine`
 - [x] `API Manager`
 - [x] `API Google Cloud SQL`
 - [x] `API Container Registry`
 
-- en GCP crear un cluster de tipo estandar.
+- En GCP crear un cluster de tipo estandar.
 ```sh
 gcloud container clusters create cluster-pf --zone=us-east1-b --machine-type=g1-small --num-nodes=3
 ```
@@ -63,7 +63,7 @@ gcloud container clusters create cluster-pf --zone=us-east1-b --machine-type=g1-
 gcloud container clusters get-credentials cluster-pf
 ```
 
-- en [GCP](https://console.cloud.google.com/) usar un servicio de SQL de tipo (MYSQL) `versión 5.6`, los datos que ingresará son importantes por favor recordar ya que serán requeridos en los siguientes pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
+- En [GCP](https://console.cloud.google.com/) usar un servicio de SQL de tipo (MYSQL) `versión 5.6`, los datos que ingresará son importantes por favor recordar ya que serán requeridos en los siguientes pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
 ###### Crear una BBDD en mysql con el nombre (contactos).
 ###### Crear un usuario de mysql con acceso a la BBDD contactos.
 > Recomendaciones al crear instancia SQL: 
@@ -74,7 +74,7 @@ gcloud container clusters get-credentials cluster-pf
 `Tipo Maquina: Ligera`
 `Tipo Almacenamiento: HDD y 10GB`
 
-- en GCP crear cuenta de servicio `(Service Account)` con Rol `cloudsql.client` y generar la key de tipo JSON.
+- En GCP crear cuenta de servicio `(Service Account)` con Rol `cloudsql.client` y generar la key de tipo JSON.
 ```sh
 gcloud iam service-accounts create sql-cloud-pf --display-name="svc accounts sql" --description="Cuenta para SQL PF"
 ```
@@ -107,7 +107,7 @@ kubectl create secret generic claves-proyecto-final \
 
 ## Creando Imagenes, Subiendo y desplegando
 
-- 1) el `Backend` por lo cual debe estar dentro de la carperta en la terminal
+- 1) El `Backend` por lo cual debe estar dentro de la carperta en la terminal
 ```sh
 cd Backend
 docker build -t us.gcr.io/proyecto-final-jc/nodeback .
@@ -115,7 +115,7 @@ docker push us.gcr.io/proyecto-final-jc/nodeback
 kubectl apply -f deployment.yaml
 ```
 
-- 2) el `Frontend` por lo cual debe estar dentro de la carperta en la terminal
+- 2) El `Frontend` por lo cual debe estar dentro de la carperta en la terminal
 ```sh
 cd Frontend
 docker build -t us.gcr.io/proyecto-final-jc/nodefront .
@@ -123,7 +123,7 @@ docker push us.gcr.io/proyecto-final-jc/nodefront
 kubectl apply -f deployment.yaml
 ```
 
-- 3) necesitamos averiguar la ip pública donde se desplego nuestra aplicación en la web para ello ejecutamos el siguiente comando 
+- 3) Necesitamos averiguar la ip pública donde se desplego nuestra aplicación en la web para ello ejecutamos el siguiente comando 
 
 ```sh
 kubectl get services
