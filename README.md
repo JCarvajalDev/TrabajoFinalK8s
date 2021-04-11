@@ -8,7 +8,7 @@
 
 ## Caracteristicas
 - Es un CRUD de una agenda de contactos (Node, React, nginx) con conexion a MySQL
-- Aplicacion docker con kubernetes en google cloud
+- Aplicación docker con kubernetes en google cloud
 - Uso de service account 
 - Uso de secret kubernetes
 - Uso de proxy cloud sql
@@ -18,7 +18,7 @@
 
 - Tener una cuenta google cloud `(obligatorio)` [Link](https://cloud.google.com/)
 - Tener Docker instalado localmente `(obligatorio)` [Link](https://docs.docker.com/get-started/)
-- Descargar el codigo fuente `(obligatorio)` [Link](https://github.com/JCarvajalDev/TrabajoFinalK8s)
+- Descargar el código fuente `(obligatorio)` [Link](https://github.com/JCarvajalDev/TrabajoFinalK8s)
 ###### si usa git puede usar el siguiente comando
 ```sh
 git clone https://github.com/JCarvajalDev/TrabajoFinalK8s.git
@@ -35,12 +35,12 @@ gcloud init
 ```sh
 gcloud components install kubectl
 ```
-- Permitir a Docker local poder trabjar con gcp
+- Permitir a Docker local poder trabajar con gcp
 ```sh
 gcloud auth configure-docker
 gcloud auth login
 ```
-- en la terminal local una vez ejecutado valido con GCP crear un proyecto.
+- en la terminal local una vez ejecutado validado con GCP crear un proyecto.
 ```sh
 gcloud projects create proyecto-final-jc --name="Proyecto-Final-JC"
 ```
@@ -63,7 +63,7 @@ gcloud container clusters create cluster-pf --zone=us-east1-b --machine-type=g1-
 gcloud container clusters get-credentials cluster-pf
 ```
 
-- en [GCP](https://console.cloud.google.com/) usar un servicio de SQL de tipo (MYSQL) `version 5.6`, los datos que ingresara son importante por favor recordar ya que seran requerido en los siguiente pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
+- en [GCP](https://console.cloud.google.com/) usar un servicio de SQL de tipo (MYSQL) `versión 5.6`, los datos que ingresará son importantes por favor recordar ya que serán requeridos en los siguientes pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
 ###### Crear una BBDD en mysql con el nombre (contactos).
 ###### Crear un usuario de mysql con acceso a la BBDD contactos.
 > Recomendaciones al crear instancia SQL: 
@@ -102,7 +102,7 @@ kubectl create secret generic claves-proyecto-final \
 
 ## Configuraciones en el proyecto `Backend`
 - En la carpeta Backend del proyecto modificar el deployment.yaml
-###### en la linea 34 donde dice Tu Nombre de la conexión MYSQL debes colocar la que te entrego GCP en la instancia MySQL esto lo hacemos porque se configuro en este proyecto con un proxy seguro de conexion `(cloud_sql_proxy)` entre el cluster y la instancia MySQL
+###### en la linea 34 donde dice Tu Nombre de la conexión MYSQL debes colocar la que te entrego GCP en la instancia MySQL esto lo hacemos porque se configuró en este proyecto con un proxy seguro de conexión `(cloud_sql_proxy)` entre el cluster y la instancia MySQL
 
 ## Creando Imagenes, Subiendo y desplegando
 
@@ -122,12 +122,12 @@ docker push us.gcr.io/proyecto-final-jc/nodefront
 kubectl apply -f deployment.yaml
 ```
 
-- 3) necesitamos averiguar la ip publica donde publicado nuestra aplicacion en web para ello ejecutamos el siguiente comando 
+- 3) necesitamos averiguar la ip pública donde se desplego nuestra aplicación en la web para ello ejecutamos el siguiente comando 
 
 ```sh
 kubectl get services
 ```
-######  se debe esperar un poco hasta que el servicio svc-nodeback-nodefront entregue la ip publica por ende debe ejecutar el comando anterior las veces que sea necesario.
+######  se debe esperar un poco hasta que el servicio svc-nodeback-nodefront entregue la ip pública por ende debe ejecutar el comando anterior las veces que sea necesario.
 
 
 
