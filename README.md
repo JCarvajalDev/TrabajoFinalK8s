@@ -20,7 +20,7 @@
 - Tener Docker instalado localmente (obligatorio)
 - Descargar el codigo fuente (obligatorio) 
 ```sh
-git cloner https://github.com/JCarvajalDev/TrabajoFinalK8s.git
+git clone https://github.com/JCarvajalDev/TrabajoFinalK8s.git
 ```
 - instalar node y kubernetes localmente (opcional)
 
