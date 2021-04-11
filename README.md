@@ -1,7 +1,8 @@
 # Agenda de Contactos Proyecto Educativo
 > Proyecto creado en Node y React adaptado a Docker con Kubernetes.
 
-[Fuentes Originales](https://github.com/Brandon05/Address-Book-)
+###### [Fuentes Originales](https://github.com/Brandon05/Address-Book-)
+###### [Fuentes Modificado](https://github.com/JCarvajalDev/TrabajoFinalK8s)
 
 ![screenshot](link)
 
@@ -35,7 +36,7 @@ gcloud components install kubectl
 gcloud auth configure-docker
 gcloud auth login
 ```
-- en la terminal local una vez ejecutado el comando anteriror GCP crear un proyecto.
+- en la terminal local una vez ejecutado valido con GCP crear un proyecto.
 ```sh
 gcloud projects create proyecto-final-jc --name="Proyecto-Final-JC"
 ```
@@ -58,9 +59,9 @@ gcloud container clusters create cluster-pf --zone=us-east1-b --machine-type=g1-
 gcloud container clusters get-credentials cluster-pf
 ```
 
-- en GCP usar un servicio de SQL de tipo BBDD (MYSQL) version 5.6, los datos que ingresara son importante por favor recordar ya que seran usado en los siguiente pasos (Nombre de la conexión, Usuario, Contraseña, Nombre BBDD)
--- Crear una BBDD en mysql con el nombre (contactos).
--- Crear un usuario de mysql con acceso a la BBDD contactos.
+- en GCP usar un servicio de SQL de tipo (MYSQL) `version 5.6`, los datos que ingresara son importante por favor recordar ya que seran requerido en los siguiente pasos (Nombre de la conexión `Backend->deployment.yaml`, Usuario `env->secret`, Contraseña `env->secret`, Nombre BBDD `env->secret`)
+###### Crear una BBDD en mysql con el nombre (contactos).
+###### Crear un usuario de mysql con acceso a la BBDD contactos.
 > Recomendaciones al crear instancia SQL: 
 `id de instancia: mysqlpf`
 `Version bbdd: MYSQL 5.6`
@@ -69,7 +70,7 @@ gcloud container clusters get-credentials cluster-pf
 `Tipo Maquina: Ligera`
 `Tipo Almacenamiento: HDD y 10GB`
 
-- en GCP crear cuenta de servicio (Service Account) con Rol cloudsql.client y generar la key de tipo JSON.
+- en GCP crear cuenta de servicio `(Service Account)` con Rol `cloudsql.client` y generar la key de tipo JSON.
 ```sh
 gcloud iam service-accounts create sql-cloud-pf --display-name="svc accounts sql" --description="Cuenta para SQL PF"
 ```
@@ -102,7 +103,7 @@ esto lo hacemos porque se configuro en este proyecto un proxy seguro de conexion
 
 ## Creando Imagenes, Subiendo y desplegando
 
-- 1) el Backend por lo cual debe estar dentro de la carperta en la terminal
+- 1) el `Backend` por lo cual debe estar dentro de la carperta en la terminal
 ```sh
 cd Backend
 docker build -t us.gcr.io/proyecto-final-jc/nodeback .
@@ -110,7 +111,7 @@ docker push us.gcr.io/proyecto-final-jc/nodeback
 kubectl apply -f deployment.yaml
 ```
 
-- 2) el Frontend por lo cual debe estar dentro de la carperta en la terminal
+- 2) el `Frontend` por lo cual debe estar dentro de la carperta en la terminal
 ```sh
 cd Frontend
 docker build -t us.gcr.io/proyecto-final-jc/nodefront .
@@ -118,12 +119,12 @@ docker push us.gcr.io/proyecto-final-jc/nodefront
 kubectl apply -f deployment.yaml
 ```
 
-- 3) revisar donde quedo publicado nuestra aplicacion en web 
--- se debe esperar un poco hasta que el servicion svc-nodeback-nodefront entregue la ip publica
+- 3) necesitamos averiguar la ip publica donde publicado nuestra aplicacion en web para ello ejecutamos el siguiente comando 
+
 ```sh
 kubectl get services
 ```
-
+-- se debe esperar un poco hasta que el servicion svc-nodeback-nodefront entregue la ip publica
 
 
 
