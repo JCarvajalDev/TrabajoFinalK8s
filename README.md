@@ -96,7 +96,7 @@ kubectl create secret generic claves-proyecto-final \
 --from-literal=DB_PORT=3306
 ```
 
-## Configuraciones en el Proyecto
+## Configuraciones en el proyecto `Backend`
 - En la carpeta Backend del proyecto modificar el deployment.yaml
 -- en la linea 34 donde dice Tu Nombre de la conexión MYSQL debes colocar la que te entrego GCP en la instancia MySQL
 esto lo hacemos porque se configuro en este proyecto un proxy seguro de conexion (cloud_sql_proxy) entre el cluster y la instancia MySQL
